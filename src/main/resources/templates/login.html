@@ -1,0 +1,35 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.82.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{assets/dist/css/bootstrap.min.css}" >
+    <link rel="stylesheet" type="text/css" th:href="@{signin.css}">
+</head>
+<body class="text-center">
+<main class="form-signin">
+    <form th:action="@{/login}" class="form-horizontal" method="post">
+        <img class="mb-4" th:src="@{assets/brand/bootstrap-logo.svg}" alt="" width="72" height="57">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <h1 class="h3 mb-3 fw-normal">Login Block</h1>
+        <div th:if="${param.logout}">Your have been logged out</div>
+        <div th:if="${param.error}">Invalid Password</div>
+        <div class="form-label">
+            <div class="form-floating">
+                <input type="email" name="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021–2175</p>
+    </form>
+</main>
+</body>
+</html>
